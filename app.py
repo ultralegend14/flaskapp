@@ -17,8 +17,10 @@ def update_latest_link(new_link):
     collection.update_one({"_id": "latest"}, {"$set": {"ngrok_url": new_link}}, upsert=True)
 
 def get_latest_link():
-    doc = collection.find_one({"_id": "latest"})
+    # Fetch the most recent document based on insertion time
+    doc = collection.find_one({}, sort=[("_id", -1)])
     return doc.get("ngrok_url") if doc else ""
+
 
 # Home page with embedded HTML/CSS/JS that displays deepfake info and a button linking to the model.
 @app.route("/")
