@@ -9,7 +9,7 @@ app = Flask(__name__)
 uri = "mongodb+srv://bharshavardhanreddy924:516474Ta@data-dine.5oghq.mongodb.net/?retryWrites=true&w=majority&ssl=true"
 
 client = MongoClient(uri)
-db = client["deepfake_db"]
+db = client["data-dine"]
 # We'll use a single document with _id "latest" to store the current ngrok link.
 collection = db["ngrok_links"]
 
